@@ -1,66 +1,33 @@
 ---
-title: 'Navigation'
-description: 'The navigation field in mint.json defines the pages that go in the navigation menu'
-icon: 'map'
+title: 'Kotlin Multiplatform'
+description: 'Recommended SQLite library for Kotlin Multiplatform'
+icon: 'k'
 ---
 
-The navigation menu is the list of links on every website.
+## SQLDelight
+SQLDelight is one the few SQLite drivers that supports Kotlin Multiplatform and is used in almost all KMP samples and showcase apps. 
 
-You will likely update `mint.json` every time you add a new page. Pages do not show up automatically.
+It does not expose many compiler options but does include some good defaults that make extension loading possible. The library shows consistent performance across various platforms when compiling for KMP. It does not allow direct access to the SQLite C API which is provided by the SQLiter library under the hood. 
 
-## Navigation syntax
+SQDelight does however have a rich SQLite API which generates type-safe Kotlin APIs from SQL which makes writing and maintaining SQL statements much easier. It does support querying the database asynchronously and allows the database to be configured for concurrent read transactions (using WAL mode).
 
-Our navigation syntax is recursive which means you can make nested navigation groups. You don't need to include `.mdx` in page names.
-
-<CodeGroup>
-
-```json Regular Navigation
-"navigation": [
-    {
-        "group": "Getting Started",
-        "pages": ["quickstart"]
-    }
-]
-```
-
-```json Nested Navigation
-"navigation": [
-    {
-        "group": "Getting Started",
-        "pages": [
-            "quickstart",
-            {
-                "group": "Nested Reference Pages",
-                "pages": ["nested-reference-page"]
-            }
-        ]
-    }
-]
-```
-
-</CodeGroup>
-
-## Folders
-
-Simply put your MDX files in folders and update the paths in `mint.json`.
-
-For example, to have a page at `https://yoursite.com/your-folder/your-page` you would make a folder called `your-folder` containing an MDX file called `your-page.mdx`.
-
-<Warning>
-
-You cannot use `api` for the name of a folder unless you nest it inside another folder. Mintlify uses Next.js which reserves the top-level `api` folder for internal server calls. A folder name such as `api-reference` would be accepted.
-
-</Warning>
-
-```json Navigation With Folder
-"navigation": [
-    {
-        "group": "Group Name",
-        "pages": ["your-folder/your-page"]
-    }
-]
-```
-
-## Hidden Pages
-
-MDX files not included in `mint.json` will not show up in the sidebar but are accessible through the search bar and by linking directly to them.
+<CardGroup cols={3}>
+  <Card
+    title="View library"
+    icon="github"
+    href="https://github.com/cashapp/sqldelight"
+  >
+  </Card>
+  <Card
+    title="PowerSync Example Apps"
+    icon="code"
+    href="https://docs.powersync.com/resources/demo-apps-example-projects#kotlin-multiplatform"
+  >
+  </Card>
+  <Card
+    title="PowerSync Quickstart"
+    icon="rocket"
+    href="https://docs.powersync.com/client-sdk-references/kotlin-multiplatform#installation"
+  >
+  </Card>
+</CardGroup>

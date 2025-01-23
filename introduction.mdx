@@ -3,7 +3,7 @@ title: Introduction
 description: "Resources for implementing SQLite as an in-app database for web, mobile or desktop apps."
 ---
 
-## Tl;DR
+## TL;DR
 There's no standard implementation of SQLite for higher-level languages. This guide provides resources to navigate available options.
 
 ## Background/Genesis
@@ -13,7 +13,7 @@ SQLite is the perfect in-app database, but the SQLite project itself only offers
 What you need can be broken down into layers:
 
 1. **A SQLite build for each OS + architecture (e.g. windows_x86).** There are many possible compiler options to configure the build, or it can be replaced with an alternative (e.g. SQLCipher, or libsql).
-2. **Low-level language bindings, e.g. https://pub.dev/packages/sqlite3.** This is often a one-to-one mapping to the SQLite C APIs, or with minor modifications for the specific language.
+2. **Low-level language bindings** This is often a one-to-one mapping to the SQLite C APIs, or with minor modifications for the specific language.
 3. **(Optional) High-level bindings:** Wrapper methods for transactions, batch updates, potential concurrency support, migrations, query builders.
 4. **ORM.**
 
@@ -62,76 +62,35 @@ Examples of functionality:
 
 This guide aims to provide an overview of the available options for implementing SQLite in higher-level languages, and recommend the best options for each language.
 
-## Select a language of framework
-
-
+## Select a language or framework
 
 <CardGroup cols={2}>
   <Card
     title="JavaScript"
     icon="js"
-    href="https://mintlify.com/docs/quickstart"
+    href="https://localfirstnews.mintlify.app/javascript"
   >
-    Get your docs set up locally for easy development
   </Card>
   <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
+    title="React Native"
+    icon="react"
+    href="https://localfirstnews.mintlify.app/react-native"
   >
-    Preview your changes before you push to make sure they're perfect
   </Card>
 </CardGroup>
 
 <CardGroup cols={2}>
   <Card
-    title="Edit Your Docs"
-    icon="pen-to-square"
-    href="https://mintlify.com/docs/quickstart"
+    title="Flutter"
+    icon="flutter"
+    href="https://localfirstnews.mintlify.app/flutter"
   >
-    Get your docs set up locally for easy development
   </Card>
   <Card
-    title="Preview Changes"
-    icon="image"
-    href="https://mintlify.com/docs/development"
+    title="Kotlin Multiplatform"
+    icon="k"
+    href="https://localfirstnews.mintlify.app/kotlin-multiplatform"
   >
-    Preview your changes before you push to make sure they're perfect
   </Card>
 </CardGroup>
 
-
-## Make it yours
-
-Update your docs to your brand and add valuable content for the best user conversion.
-
-<CardGroup cols={2}>
-  <Card
-    title="Customize Style"
-    icon="palette"
-    href="https://mintlify.com/docs/settings/global"
-  >
-    Customize your docs to your company's colors and brands
-  </Card>
-  <Card
-    title="Reference APIs"
-    icon="code"
-    href="https://mintlify.com/docs/api-playground/openapi"
-  >
-    Automatically generate endpoints from an OpenAPI spec
-  </Card>
-  <Card
-    title="Add Components"
-    icon="screwdriver-wrench"
-    href="https://mintlify.com/docs/content/components/accordions"
-  >
-    Build interactive features and designs to guide your users
-  </Card>
-  <Card
-    title="Get Inspiration"
-    icon="stars"
-    href="https://mintlify.com/customers"
-  >
-    Check out our showcase of our favorite documentation
-  </Card>
-</CardGroup>

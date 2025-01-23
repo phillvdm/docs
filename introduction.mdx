@@ -1,7 +1,10 @@
 ---
-title: In-App SQLite
-description: "Resources for implementing SQLite as an in-app database for mobile, desktop or browser-based apps."
+title: Introduction
+description: "Resources for implementing SQLite as an in-app database for web, mobile or desktop apps."
 ---
+
+## Tl;DR
+There's no standard implementation of SQLite for higher-level languages. This guide provides resources to navigate available options.
 
 ## Background/Genesis
 
@@ -9,17 +12,76 @@ SQLite is the perfect in-app database, but the SQLite project itself only offers
 
 What you need can be broken down into layers:
 
-1. A SQLite build for each OS + architecture (e.g. windows_x86). There are many possible compiler options to configure the build, or it can be replaced with an alternative (e.g. SQLCipher, or libsql).
-2. Low-level language bindings, e.g. https://pub.dev/packages/sqlite3. This is often a one-to-one mapping to the SQLite C APIs, or with minor modifications for the specific language.
-3. (Optional) High-level bindings: Wrapper methods for transactions, batch updates, potential concurrency support, migrations, query builders.
-4. ORM.
+1. **A SQLite build for each OS + architecture (e.g. windows_x86).** There are many possible compiler options to configure the build, or it can be replaced with an alternative (e.g. SQLCipher, or libsql).
+2. **Low-level language bindings, e.g. https://pub.dev/packages/sqlite3.** This is often a one-to-one mapping to the SQLite C APIs, or with minor modifications for the specific language.
+3. **(Optional) High-level bindings:** Wrapper methods for transactions, batch updates, potential concurrency support, migrations, query builders.
+4. **ORM.**
 
 Layers 1, 2 and sometimes 3 are often combined in the same library.
 
 Since each layer can be implemented in a different way, higher-level SQLite libraries can vary greatly in their features and performance.
 
-### Typical issues we sometimes
+### Typical issues
 
+#### Layer 1: SQLite build
+- This is not always packaged separately - often part of layer 2.
+- Compile options are often inconsistent
+    - May differ between platforms
+    - Does not include a good default set of extensions
+    - Often not compiled with extension loading enabled
+- Not always updated quickly
+
+#### Layer 2: Low-level language bindings
+- Often bundles layer 1, with no good way to configure or replace it.
+    - Sometimes does allow replacing layer 1, but with great effort.
+- Transactions APIs are very limited in some cases.
+- In cross-platform SDKs (e.g. Flutter, React Native, Cordova, Capacitor), it often goes through the “native” code (Swift/Objective-C/Java/Kotlin) first before going to the C API. This adds additional overhead, making it slow and sometimes inconsistent between platforms.
+- Often uses the OS’s built-in SQLite lib, making the SQLite version dependent on the user’s device.
+- In some cases, does not expose all possible parameter types.
+    - Android only allows string parameters - other types have to be converted.
+    - Common to not allow binary parameters directly.
+- Good-to-have functionality is often not exposed, such as:
+    - Update hooks (used for watching for changes).
+    - Commit hooks (less commonly used)
+    - Low-level / high-performance query APIs, e.g. preparing statements.
+    - Ability to create user-defined functions.
+
+#### Layer 3: High-level bindings
+Specific issues are not as common in this layer, but the functionality provided is very inconsistent.
+
+Examples of functionality:
+- Proper transaction wrappers with locking support.
+- Asynchronous versions of all methods if relevant in the language.
+- Concurrency support via connection pooling.
+- Watching for updates to tables, or higher-level watching queries.
+- Query builders.
+- Migration support.
+- Efficient batch updates.
+
+## Mission
+
+This guide aims to provide an overview of the available options for implementing SQLite in higher-level languages, and recommend the best options for each language.
+
+## Select a language of framework
+
+
+
+<CardGroup cols={2}>
+  <Card
+    title="JavaScript"
+    icon="js"
+    href="https://mintlify.com/docs/quickstart"
+  >
+    Get your docs set up locally for easy development
+  </Card>
+  <Card
+    title="Preview Changes"
+    icon="image"
+    href="https://mintlify.com/docs/development"
+  >
+    Preview your changes before you push to make sure they're perfect
+  </Card>
+</CardGroup>
 
 <CardGroup cols={2}>
   <Card
@@ -37,6 +99,7 @@ Since each layer can be implemented in a different way, higher-level SQLite libr
     Preview your changes before you push to make sure they're perfect
   </Card>
 </CardGroup>
+
 
 ## Make it yours
 

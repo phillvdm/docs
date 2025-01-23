@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/schema.json",
-  "name": "Starter Kit",
+  "name": "In-App SQLite Guide",
   "logo": {
     "dark": "/logo/dark.svg",
     "light": "/logo/light.svg"
@@ -17,13 +17,13 @@
   },
   "topbarLinks": [
     {
-      "name": "Support",
-      "url": "mailto:hi@mintlify.com"
+      "name": "Suggest a library for review",
+      "url": ""
     }
   ],
   "topbarCtaButton": {
-    "name": "Dashboard",
-    "url": "https://dashboard.mintlify.com"
+    "name": "PowerSync for SQLite",
+    "url": "https://www.powersync.com"
   },
   "tabs": [
     {
@@ -31,47 +31,30 @@
       "url": "api-reference"
     }
   ],
-  "anchors": [
-    {
-      "name": "Documentation",
-      "icon": "book-open-cover",
-      "url": "https://mintlify.com/docs"
-    },
-    {
-      "name": "Community",
-      "icon": "slack",
-      "url": "https://mintlify.com/community"
-    },
-    {
-      "name": "Blog",
-      "icon": "newspaper",
-      "url": "https://mintlify.com/blog"
-    }
-  ],
   "navigation": [
     {
-      "group": "Get Started",
+      "group": "In-App SQLite Guide",
       "pages": [
         "introduction",
-        "quickstart",
-        "development"
+        "evaluation-criteria"
       ]
     },
     {
-      "group": "Essentials",
+      "group": "Recommended Libraries",
       "pages": [
-        "essentials/markdown",
-        "essentials/code",
-        "essentials/images",
-        "essentials/settings",
-        "essentials/navigation",
-        "essentials/reusable-snippets"
+        "recommended-libraries/javascript",
+        "recommended-libraries/react-native",
+        "recommended-libraries/flutter",
+        "recommended-libraries/kotlin-multiplatform",
+        "recommended-libraries/swift"
       ]
     },
     {
-      "group": "API Documentation",
+      "group": "SQLite Resources",
       "pages": [
-        "api-reference/introduction"
+        "sqlite-resources/sqlite-performance-info",
+        "sqlite-resources/helpful-articles",
+        "sqlite-resources/faq"
       ]
     },
     {

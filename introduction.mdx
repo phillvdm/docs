@@ -3,20 +3,23 @@ title: In-App SQLite
 description: "Resources for implementing SQLite as an in-app database for mobile, desktop or browser-based apps."
 ---
 
-<img
-  className="block dark:hidden"
-  src="/images/hero-light.svg"
-  alt="Hero Light"
-/>
-<img
-  className="hidden dark:block"
-  src="/images/hero-dark.svg"
-  alt="Hero Dark"
-/>
+## Background/Genesis
 
-## Setting up
+SQLite is the perfect in-app database, but the SQLite project itself only offers a low-level C library. To effectively use it in a higher-level language, you need much more.
 
-The first step to world-class documentation is setting up your editing environments.
+What you need can be broken down into layers:
+
+1. A SQLite build for each OS + architecture (e.g. windows_x86). There are many possible compiler options to configure the build, or it can be replaced with an alternative (e.g. SQLCipher, or libsql).
+2. Low-level language bindings, e.g. https://pub.dev/packages/sqlite3. This is often a one-to-one mapping to the SQLite C APIs, or with minor modifications for the specific language.
+3. (Optional) High-level bindings: Wrapper methods for transactions, batch updates, potential concurrency support, migrations, query builders.
+4. ORM.
+
+Layers 1, 2 and sometimes 3 are often combined in the same library.
+
+Since each layer can be implemented in a different way, higher-level SQLite libraries can vary greatly in their features and performance.
+
+### Typical issues we sometimes
+
 
 <CardGroup cols={2}>
   <Card

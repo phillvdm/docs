@@ -1,6 +1,6 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
+  "theme": "palm",
   "name": "In-App SQLite Manifesto",
   "colors": {
     "primary": "#0F80CC",

@@ -1,66 +1,60 @@
 ---
 title: Introduction
-description: "Resources for implementing SQLite as an in-app database for web, mobile or desktop apps."
+description: "SQLite is the ideal in-app database for web, mobile, and desktop applications. However, there is no standardized implementation for higher-level languages. This manifesto outlines the challenges, common issues, and guiding principles for effective SQLite integration."
 ---
 
-## TL;DR
-There's no standard implementation of SQLite for higher-level languages. This guide provides resources to navigate available options.
+## Background
+SQLite is a lightweight, self-contained, and efficient database engine. However, the SQLite project itself provides only the core C library. Developers integrating SQLite into higher-level languages must account for multiple layers:
+1. SQLite Build – Precompiled binaries for different platforms, often with custom compiler flags.
+2. Low-Level Bindings – Language-specific APIs to interface with the SQLite C library.
+3. High-Level Bindings – Wrappers for ease of use, concurrency handling, and additional features.
+4. ORM (Optional) – Object-relational mapping for abstracting SQL queries.
 
-## Background/Genesis
+Since these layers can be implemented in different ways, SQLite libraries vary widely in quality and capability.
 
-SQLite is the perfect in-app database, but the SQLite project itself only offers a low-level C library. To effectively use it in a higher-level language, you need much more.
-
-What you need can be broken down into layers:
-
-1. **A SQLite build for each OS + architecture (e.g. windows_x86).** There are many possible compiler options to configure the build, or it can be replaced with an alternative (e.g. SQLCipher, or libsql).
-2. **Low-level language bindings** This is often a one-to-one mapping to the SQLite C APIs, or with minor modifications for the specific language.
-3. **(Optional) High-level bindings:** Wrapper methods for transactions, batch updates, potential concurrency support, migrations, query builders.
-4. **ORM.**
-
-Layers 1, 2 and sometimes 3 are often combined in the same library.
-
-Since each layer can be implemented in a different way, higher-level SQLite libraries can vary greatly in their features and performance.
-
-### Typical issues
+### Common issues
 
 #### Layer 1: SQLite build
-- This is not always packaged separately - often part of layer 2.
-- Compile options are often inconsistent
-    - May differ between platforms
-    - Does not include a good default set of extensions
-    - Often not compiled with extension loading enabled
-- Not always updated quickly
+- Often bundled within Layer 2, making customization difficult.
+- Compile options vary, leading to inconsistencies across platforms.
+- Some builds lack useful extensions or enable them inconsistently.
+- Not always compiled with extension loading enabled.
+- Updates can lag behind the official SQLite releases.
 
-#### Layer 2: Low-level language bindings
-- Often bundles layer 1, with no good way to configure or replace it.
-    - Sometimes does allow replacing layer 1, but with great effort.
-- Transactions APIs are very limited in some cases.
-- In cross-platform SDKs (e.g. Flutter, React Native, Cordova, Capacitor), it often goes through the “native” code (Swift/Objective-C/Java/Kotlin) first before going to the C API. This adds additional overhead, making it slow and sometimes inconsistent between platforms.
-- Often uses the OS’s built-in SQLite lib, making the SQLite version dependent on the user’s device.
-- In some cases, does not expose all possible parameter types.
-    - Android only allows string parameters - other types have to be converted.
-    - Common to not allow binary parameters directly.
-- Good-to-have functionality is often not exposed, such as:
-    - Update hooks (used for watching for changes).
-    - Commit hooks (less commonly used)
-    - Low-level / high-performance query APIs, e.g. preparing statements.
-    - Ability to create user-defined functions.
+#### Layer 2: Low-level bindings
+- Frequently bundles the SQLite build, limiting configuration options.
+- May require extensive effort to replace or customize the SQLite build.
+- Limited transaction APIs in some languages.
+- In cross-platform SDKs (Flutter, React Native, etc.), bindings often route through native code (Swift/Java/Kotlin) before reaching SQLite, adding performance overhead.
+- May rely on the OS’s built-in SQLite version, leading to inconsistencies.
+- Some bindings restrict parameter types, e.g., only allowing string parameters on Android.
+- Often lack useful SQLite features such as:
+  - Update hooks (for watching changes)
+  - Commit hooks (less commonly used)
+  – Low-level query optimizations (e.g., prepared statements)
+  - Custom user-defined functions
 
 #### Layer 3: High-level bindings
-Specific issues are not as common in this layer, but the functionality provided is very inconsistent.
-
-Examples of functionality:
-- Proper transaction wrappers with locking support.
-- Asynchronous versions of all methods if relevant in the language.
-- Concurrency support via connection pooling.
-- Watching for updates to tables, or higher-level watching queries.
-- Query builders.
-- Migration support.
-- Efficient batch updates.
+- Feature sets are highly inconsistent across libraries.
+- Some libraries provide:
+  - Transaction wrappers with proper locking mechanisms.
+  - Asynchronous API support.
+  - Connection pooling for concurrency.
+  - Table change notifications for reactive updates.
+  - Query builders.
+  - Migrations.
+  - Efficient batch updates.
 
 ## Mission
 
-This guide aims to provide an overview of the available options for implementing SQLite in higher-level languages, and recommend the best options for each language.
+This manifesto seeks to:
+
+1. Define the essential requirements for high-quality SQLite integrations.
+2. Advocate for well-designed, maintainable, and performant SQLite libraries.
+3. Provide guidance on selecting the best SQLite implementations for each language.
+4. Encourage standardization and best practices in SQLite usage.
+
+By addressing these challenges, we aim to make SQLite a more accessible and powerful choice for in-app databases across all platforms.
 
 ## Select a language or framework
 

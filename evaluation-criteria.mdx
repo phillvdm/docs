@@ -1,16 +1,26 @@
 ---
-title: 'Evaluation Criteria'
-description: 'Criteria for evaluating available client-side SQLite libraries'
+title: 'Principles For In-App SQLite'
+description: 'Three key principles for implementing SQLite in applications'
 ---
 
 ## Configurability
 
-Configurability refers to the library’s flexibility in allowing developers to customize its behavior and functionality to meet specific application needs. This includes access to compiler options, using a good set of default extensions and catering for extension loading.
+- The library should be flexible, allowing developers to customize its behavior to meet specific application needs.
+- Provides access to compiler options for fine-tuned performance.
+- Includes a well-chosen set of default extensions.
+- Supports extension loading for additional functionality.
 
 ## Consistency
 
-Consistency ensures the library has consistent options across various platforms, capabilities should be consistent across platforms with sensible default settings, and cross-platform SDKs should directly access the C API without converting to another language first.
+- Options and capabilities should remain consistent across platforms.
+- Sensible default settings should be provided for ease of use.
+- Cross-platform SDKs should access the C API directly without unnecessary conversions to other languages.
 
 ## Capability
 
-Capability evaluates the library’s inclusion of a comprehensive transaction API, exposure of all possible parameter types, and good to have functionality such as update hooks (used for watching for changes), prepared statements and creating user-defined functions.
+- Includes a comprehensive transaction API for robust data handling.
+- Exposes all possible parameter types to prevent limitations in data operations.
+- Supports useful functionality such as:
+    - Update hooks for tracking changes.
+    - Prepared statements for performance optimization.
+    - User-defined functions for extended customization.
